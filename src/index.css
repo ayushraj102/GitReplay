@@ -1,0 +1,176 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Warm Neutral Light Theme */
+    --gr-bg: #FAF9F6;
+    --gr-surface: #FFFFFF;
+    --gr-surface-elevated: #F3F1EC;
+    --gr-border: #E5E2DC;
+    --gr-border-strong: #D0CBC2;
+    --gr-text: #1A1A18;
+    --gr-muted: #6E6A63;
+    --gr-accent: #E0A458;
+    --gr-accent-hover: #D49442;
+    --gr-accent-text: #9A5F14;
+    --gr-accent-soft: rgba(224, 164, 88, 0.14);
+
+    /* Subtle Diff Tints (10-15% opacity + thin left bar) */
+    --gr-diff-add-bg: rgba(111, 191, 139, 0.14);
+    --gr-diff-add-bar: #6FBF8B;
+    --gr-diff-add-sign: #2A7D4A;
+    --gr-diff-del-bg: rgba(217, 119, 111, 0.14);
+    --gr-diff-del-bar: #D9776F;
+    --gr-diff-del-sign: #B64239;
+
+    --gr-danger-bg: rgba(217, 119, 111, 0.12);
+    --gr-danger-border: rgba(217, 119, 111, 0.45);
+    --gr-danger-text: #A2372E;
+  }
+
+  .dark {
+    /* Warm Neutral Dark Theme */
+    --gr-bg: #141414;
+    --gr-surface: #1C1B1A;
+    --gr-surface-elevated: #242220;
+    --gr-border: #2A2927;
+    --gr-border-strong: #3B3936;
+    --gr-text: #EDEAE4;
+    --gr-muted: #8C8780;
+    --gr-accent: #E0A458;
+    --gr-accent-hover: #E8B46E;
+    --gr-accent-text: #E0A458;
+    --gr-accent-soft: rgba(224, 164, 88, 0.14);
+
+    /* Subtle Diff Tints (10-15% opacity + thin left bar) */
+    --gr-diff-add-bg: rgba(111, 191, 139, 0.12);
+    --gr-diff-add-bar: #6FBF8B;
+    --gr-diff-add-sign: #6FBF8B;
+    --gr-diff-del-bg: rgba(217, 119, 111, 0.12);
+    --gr-diff-del-bar: #D9776F;
+    --gr-diff-del-sign: #D9776F;
+
+    --gr-danger-bg: rgba(217, 119, 111, 0.12);
+    --gr-danger-border: rgba(217, 119, 111, 0.4);
+    --gr-danger-text: #E8968F;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--gr-bg);
+    color: var(--gr-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--gr-accent);
+    outline-offset: 2px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle custom scrollbars for code & timeline panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gr-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gr-border-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gr-muted);
+}
+
+/* Syntax highlighting tokens for Markdown code blocks (Light & Dark warm neutral) */
+.hljs {
+  color: var(--gr-text);
+  background: transparent;
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--gr-muted);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #9A5F14;
+  font-weight: 500;
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-subst {
+  color: #E0A458;
+}
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #A85B20;
+}
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-variable,
+.dark .hljs-template-variable,
+.dark .hljs-tag .hljs-attr {
+  color: #D99B66;
+}
+.hljs-string,
+.hljs-doctag {
+  color: #2A7D4A;
+}
+.dark .hljs-string,
+.dark .hljs-doctag {
+  color: #6FBF8B;
+}
+.hljs-title,
+.hljs-section,
+.hljs-selector-id,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: #2C5E8A;
+  font-weight: 500;
+}
+.dark .hljs-title,
+.dark .hljs-section,
+.dark .hljs-selector-id,
+.dark .hljs-title.class_,
+.dark .hljs-title.function_ {
+  color: #84B2D8;
+}
+.hljs-type,
+.hljs-class .hljs-title,
+.hljs-built_in {
+  color: #7D4E8A;
+}
+.dark .hljs-type,
+.dark .hljs-class .hljs-title,
+.dark .hljs-built_in {
+  color: #C39BD3;
+}
+.hljs-deletion {
+  color: var(--gr-diff-del-sign);
+}
+.hljs-addition {
+  color: var(--gr-diff-add-sign);
+}

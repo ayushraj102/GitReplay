@@ -1,0 +1,6 @@
+{
+  "name": "GitReplay",
+  "description": "Interactive Git commit history player and code evolution visualizer for exploring architectural decisions across time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
